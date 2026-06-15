@@ -49,20 +49,67 @@ class _HomePageState extends State<HomePage> {
       ), 
     ), 
   ), 
-  drawer: const Drawer(
-
-     backgroundColor: Colors.grey[900],
-  child: Column(
+  drawer: Drawer(
+    backgroundColor: Colors.grey[900],
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
       // logo
-      DrawerHeader(
+      Column(
+        children: [DrawerHeader(
         child: Image.asset(
           'lib/images/nike.png',
           color: Colors.white,
-        ), // Image.asset
-      ), // DrawerHeader
+        ), 
+      ),
+      
+      Padding(
+        padding: EdgeInsets.symmetric(horizontal:25.0),
+        child: Divider(
+          color:Colors.grey[800],
+        ),
+      ),
+      // other pages
+      Padding(
+        padding: EdgeInsets.only(left:25.0),
+        child: ListTile(
+          leading: Icon(Icons.home,
+          color:Colors.white),
+          title: Text('Home',
+          style: TextStyle(color:Colors.white)
+          ),
+          ),
+        ),
+      
+      Padding(
+        padding: EdgeInsets.only(left:25.0),
+        child: ListTile(
+          leading: Icon(Icons.info,
+          color:Colors.white),
+          title: Text('About',
+          style: TextStyle(color:Colors.white)
+          ),
+          ),
+        ),],
+      ),
+      
+      Padding(
+        padding: EdgeInsets.only(left:25.0,bottom:25),
+        child: ListTile(
+          leading: Icon(
+            Icons.logout,
+          color:Colors.white),
+          title: Text('Logout',
+          style: TextStyle(color:Colors.white)
+          ),
+          ),
+        ),
+      
+    ],
+  ),
+
   ),
       body: _pages[_selectedIndex],
-    );
+  );
   }
 }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../components/shoe_tile.dart';
+import '../models/cart.dart';
 import '../models/shoe.dart';
 class ShopPage extends StatefulWidget {
   const ShopPage({super.key});
@@ -10,9 +12,27 @@ class ShopPage extends StatefulWidget {
 }
 
 class _ShopPageState extends State<ShopPage> {
+
+// add shoe to cart
+void addShoeToCart(Shoe shoe) {
+  Provider.of<Cart>(context, listen: false).addItemToCart(shoe);
+
+  // alert the user, shoe successfully added
+  showDialog(
+    context: context,
+    builder: (context) => const AlertDialog(
+    title: Text("Successfully added!"),
+    content: Text('Check your cart'),
+
+    ),
+  ); // showDialog
+}
+
+
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Consumer<Cart>(
+      builder:(context, value,child)=>Column(
       children: [
         // search bar
 Container(
@@ -29,8 +49,8 @@ Container(
           Icons.search,
           color:Colors.grey),
       ],
-    ), // Row
-  ), // Container
+    ), 
+  ), 
         // message
       
            Padding(
@@ -41,7 +61,7 @@ Container(
              ), 
              ), 
 
-        // hot picks
+      
 // hot picks
 Padding(
   padding: const EdgeInsets.symmetric(horizontal: 25.0),
@@ -54,8 +74,8 @@ Padding(
         style: TextStyle(
           fontWeight: FontWeight.bold,
           fontSize: 24,
-        ), // TextStyle
-      ), // Text
+        ), 
+      ), 
       Text(
         'See all',
         style: TextStyle(
@@ -67,22 +87,18 @@ Padding(
   ), 
 ),
 const SizedBox(height: 10),
-
+//List of view for sale 
 Expanded(
   child: ListView.builder(
     itemCount:4,
     scrollDirection: Axis.horizontal,
     itemBuilder: (context, index) {
-      // create a shoe
-       Shoe shoe = Shoe(
-        name: 'Air Jordan',
-        price: '240',
-        description: 'cool shoe',
-         imagePath: 'lib/images/AirJordan.png',
-); // Shoe
-
+      // get a shoe from shop list 
+       Shoe shoe = value.getShoeList()[index];
+      //return the shoe
       return ShoeTile(
         shoe:shoe,
+        onTap: ()=> addShoeToCart(shoe),
       );
     }, 
   ),
@@ -96,6 +112,7 @@ const Padding(
 
       ],
 
-    );
+    ),
+     );
   }
 }

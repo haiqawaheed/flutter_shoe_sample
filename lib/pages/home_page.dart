@@ -49,7 +49,19 @@ class _HomePageState extends State<HomePage> {
       ), 
     ), 
   ), 
-  drawer: const Drawer(),
+  drawer: const Drawer(
+
+     backgroundColor: Colors.grey[900],
+  child: Column(
+    children: [
+      // logo
+      DrawerHeader(
+        child: Image.asset(
+          'lib/images/nike.png',
+          color: Colors.white,
+        ), // Image.asset
+      ), // DrawerHeader
+  ),
       body: _pages[_selectedIndex],
     );
   }

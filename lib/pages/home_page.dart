@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_shoe_store/pages/shop_page.dart';
 
 import '../components/bottom_nav_bar.dart';
+import 'cart_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -23,18 +25,21 @@ class _HomePageState extends State<HomePage> {
   // pages to display
   final List<Widget> _pages = [
     // shop page
+  
     const ShopPage(),
-
     // cart page
     const CartPage(),
   ];
 }
 
-  @override
+ @override
   Widget build(BuildContext context) {
     return Scaffold(
-    backgroundColor: Colors.grey[300],
-    bottomNavigationBar: MyBottomNavBar(),
+      backgroundColor: Colors.grey[300],
+      bottomNavigationBar: MyBottomNavBar(
+        onTabChange: (index) => navigateBottomBar(index), 
+      ),
+      body: _pages[_selectedIndex],
     );
   }
 

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../components/shoe_tile.dart';
+
 class ShopPage extends StatefulWidget {
   const ShopPage({super.key});
 
@@ -69,7 +71,17 @@ const SizedBox(height: 10),
 Expanded(
   child: ListView.builder(
     itemBuilder: (context, index) {
-      return ShoeTile();
+      // create a shoe
+       Shoe shoe = Shoe(
+        name: 'Air Jordan',
+        price: '240',
+        description: 'cool shoe',
+         imagePath: 'lib/images/AirJordan.png',
+); // Shoe
+
+      return ShoeTile(
+        shoe:shoe,
+      );
     }, 
   ),
  )

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../components/shoe_tile.dart';
-
+import '../models/shoe.dart';
 class ShopPage extends StatefulWidget {
   const ShopPage({super.key});
 
@@ -21,10 +21,10 @@ Container(
     decoration: BoxDecoration(color: Colors.grey[200],borderRadius:BorderRadius.circular(8)),
     child: const Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: const [
+      children: [
         Text(
           'Search',
-        style:TestStyle(color:Colors.grey),),
+        style:TextStyle(color:Colors.grey),),
         Icon(
           Icons.search,
           color:Colors.grey),
@@ -86,7 +86,13 @@ Expanded(
       );
     }, 
   ),
- )
+ ),
+const Padding(
+  padding: EdgeInsets.only(top: 25.0, left: 25, right: 25),
+  child: Divider(
+    color: Colors.white,
+  ), 
+),
 
       ],
 

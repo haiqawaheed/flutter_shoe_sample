@@ -40,7 +40,7 @@ Padding(
     children: [
       Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [
+        children:[
           // shoe name
   Text(
     shoe.name,
@@ -54,7 +54,7 @@ Padding(
   
   // price
   Text(
-    '\$' + shoe.price,
+    '\$${shoe.price}',
     style: const TextStyle(
       color: Colors.grey,
     ), // TextStyle

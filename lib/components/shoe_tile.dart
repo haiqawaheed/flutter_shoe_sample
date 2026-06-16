@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
  import '../models/shoe.dart';
-
 class ShoeTile extends StatelessWidget {
   final Shoe shoe;
-  void function()? onTap;
-  const ShoeTile({super.key, required this.shoe,required this.onTap,});
+  final void Function()? onTap; 
+
+  const ShoeTile({
+    super.key, 
+    required this.shoe, 
+    required this.onTap,
+  }); 
+
 
   @override
   Widget build(BuildContext context) {
